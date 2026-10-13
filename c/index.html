@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smarter, Not Harder · 卷不如选</title>
+<style>
+:root{--bg:#101014;--fg:#ececf1;--muted:#a8a8b4;--brand:#f5c451;--surface:#23232c}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif}
+main{max-width:420px;margin:0 auto;padding:56px 16px;text-align:center}
+h1{font-size:24px;margin:0 0 8px}p{color:var(--muted);margin:0 0 28px}
+a.btn{display:block;padding:14px;border-radius:12px;margin:12px 0;font-weight:600;text-decoration:none}
+a.primary{background:var(--brand);color:#1a1a21}a.secondary{background:var(--surface);color:var(--fg)}
+</style></head><body><main>
+<h1 id="t"></h1><p id="s"></p>
+<a class="btn primary" id="open" href="#"></a>
+<a class="btn secondary" id="get" href="https://apps.apple.com/app/id6819128992"></a>
+</main>
+<script>
+var zh = /^zh/i.test(navigator.language || '');
+var k = new URLSearchParams(location.search).get('k');
+var T = zh
+  ? { c: ['好友向你发起挑战', '同一副牌，看谁选得更好。'], q: ['一道人生选择题', '三条路，账面最好看的那条，你敢选吗？'], e: ['一件人生大事', '换你，会怎么选？'], x: ['卷不如选', '努力决定下限，选择决定上限。'], open: '打开 App', get: '去 App Store 下载' }
+  : { c: ['A friend challenged you', 'Same deck, same luck. Who chooses better?'], q: ['A life choice quiz', 'Three roads. The one that looks best on paper — would you take it?'], e: ['A big life decision', 'What would you choose?'], x: ['Smarter, Not Harder', 'Effort sets your floor. Choices set your ceiling.'], open: 'Open the app', get: 'Get it on the App Store' };
+var m = T[k] || T.x;
+document.getElementById('t').textContent = m[0];
+document.getElementById('s').textContent = m[1];
+var link = 'compoundlife://open' + location.search;
+var open = document.getElementById('open');
+open.textContent = T.open;
+open.href = link;
+document.getElementById('get').textContent = T.get;
+if (k) location.href = link;
+</script>
+</body></html>
